@@ -10,56 +10,57 @@ minutes: 30
 > *   Clone a remote repository.
 > *   Push to or pull from a remote repository.
 
-Version control really comes into its own
-when we begin to collaborate with other people.
-We already have most of the machinery we need to do this;
-the only thing missing is to copy changes from one repository to another.
+Version control really comes into its own when we begin to collaborate with 
+other people.
+We already have most of the machinery we need to do this; the only thing 
+missing is to copy changes from one repository to another.
 
 Systems like Git allow us to move work between any two repositories.
-In practice,
-though,
-it's easiest to use one copy as a central hub,
-and to keep it on the web rather than on someone's laptop.
+In practice, though, it's easiest to use one copy as a central hub, and to keep 
+it on the web rather than on someone's laptop.
 Most programmers use hosting services like
 [GitHub](http://github.com),
 [BitBucket](http://bitbucket.org) or
 [GitLab](http://gitlab.com/)
-to hold those master copies;
-we'll explore the pros and cons of this in the final section of this lesson.
+to hold those master copies; we'll explore the pros and cons of this in the 
+final section of this lesson.
 
-Let's start by sharing the changes we've made to our current project with the world.
-Log in to GitHub,
-then click on the icon in the top right corner to create a new repository called `planets`:
+Let's start by sharing the changes we've made to our current project with the 
+world.
+Log in to GitHub, then click on the `+` icon in the top right corner to create 
+a new repository called `<username>.github.io`. 
+Be sure to replace `<username>` with your GitHub username. 
 
 ![Creating a Repository on GitHub (Step 1)](fig/github-create-repo-01.png)
 
-Name your repository "planets" and then click "Create Repository":
+Name your repository `<username>.github.io` and then click "Create Repository":
 
 ![Creating a Repository on GitHub (Step 2)](fig/github-create-repo-02.png)
 
-As soon as the repository is created,
-GitHub displays a page with a URL and some information on how to configure your local repository:
+As soon as the repository is created, GitHub displays a page with a URL and 
+some information on how to configure your local repository:
 
 ![Creating a Repository on GitHub (Step 3)](fig/github-create-repo-03.png)
 
 This effectively does the following on GitHub's servers:
 
 ~~~ {.bash}
-$ mkdir planets
-$ cd planets
+$ mkdir <username>.github.io
+$ cd <username>.github.io
 $ git init
 ~~~
 
-Our local repository still contains our earlier work on `mars.txt`,
-but the remote repository on GitHub doesn't contain any files yet:
+Our local repository still contains the blog template and our earlier work on 
+`_config.yml`, but the remote repository on GitHub doesn't contain any files 
+yet:
 
 ![Freshly-Made GitHub Repository](fig/git-freshly-made-github-repo.svg)
 
 The next step is to connect the two repositories.
-We do this by making the GitHub repository a [remote](reference.html#remote)
-for the local repository.
-The home page of the repository on GitHub includes
-the string we need to identify it:
+We do this by making the GitHub repository a 
+[remote](reference.html#remote) for the local repository.
+The home page of the repository on GitHub includes the string we need to 
+identify it:
 
 ![Where to Find Repository URL on GitHub](fig/github-find-repo-string.png)
 
@@ -72,21 +73,18 @@ Click on the 'HTTPS' link to change the [protocol](reference.html#protocol) from
 > secure, by following one of the great tutorials from
 > [GitHub](https://help.github.com/articles/generating-ssh-keys),
 > [Atlassian/BitBucket](https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git)
-> and [GitLab](https://about.gitlab.com/2014/03/04/add-ssh-key-screencast/)
+> and
+> [GitLab](https://about.gitlab.com/2014/03/04/add-ssh-key-screencast/)
 > (this one has a screencast).
 
 ![Changing the Repository URL on GitHub](fig/github-change-repo-string.png)
 
-Copy that URL from the browser,
-go into the local `planets` repository,
-and run this command:
+Copy that URL from the browser, go into the local `my-blog` repository, and run 
+this command:
 
 ~~~ {.bash}
-$ git remote add origin https://github.com/vlad/planets.git
+$ git remote add origin https://github.com/<username>/<username>.github.io.git
 ~~~
-
-Make sure to use the URL for your repository rather than Vlad's:
-the only difference should be your username instead of `vlad`.
 
 We can check that the command has worked by running `git remote -v`:
 
@@ -94,30 +92,27 @@ We can check that the command has worked by running `git remote -v`:
 $ git remote -v
 ~~~
 ~~~ {.output}
-origin   https://github.com/vlad/planets.git (push)
-origin   https://github.com/vlad/planets.git (fetch)
+origin	https://github.com/<username>/<username>.github.io.git (fetch)
+origin	https://github.com/<username>/<username>.github.io.git (push)
 ~~~
 
-The name `origin` is a local nickname for your remote repository:
-we could use something else if we wanted to,
-but `origin` is by far the most common choice.
+The name `origin` is a local nickname for your remote repository: we could use 
+something else if we wanted to, but `origin` is by far the most common choice.
 
-Once the nickname `origin` is set up,
-this command will push the changes from our local repository
-to the repository on GitHub:
+Once the nickname `origin` is set up, this command will push the changes from 
+our local repository to the repository on GitHub:
 
 ~~~ {.bash}
 $ git push origin master
 ~~~
 ~~~ {.output}
-Counting objects: 9, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (6/6), done.
-Writing objects: 100% (9/9), 821 bytes, done.
-Total 9 (delta 2), reused 0 (delta 0)
-To https://github.com/vlad/planets
+Counting objects: 44, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (43/43), done.
+Writing objects: 100% (44/44), 1.48 MiB | 834.00 KiB/s, done.
+Total 44 (delta 7), reused 0 (delta 0)
+To https://github.com/<username>/<username>.github.io
  * [new branch]      master -> master
-Branch master set up to track remote branch master from origin.
 ~~~
 
 > ## Proxy {.callout}
@@ -169,15 +164,14 @@ We can pull changes from the remote repository to the local one as well:
 $ git pull origin master
 ~~~
 ~~~ {.output}
-From https://github.com/vlad/planets
+From https://github.com/<username>/<username>.github.io
  * branch            master     -> FETCH_HEAD
 Already up-to-date.
 ~~~
 
-Pulling has no effect in this case
-because the two repositories are already synchronized.
-If someone else had pushed some changes to the repository on GitHub,
-though,
+Pulling has no effect in this case because the two repositories are already 
+synchronized.
+If someone else had pushed some changes to the repository on GitHub, though,
 this command would download them to our local repository.
 
 > ## GitHub Timestamp {.challenge}
@@ -185,5 +179,6 @@ this command would download them to our local repository.
 > Create a remote repository on GitHub.
 > Push the contents of your local repository to the remote.
 > Make changes to your local repository and push these changes.
-> Go to the repo you just created on Github and check the [timestamps](reference.html#timestamp) of the files.
+> Go to the repo you just created on Github and check the 
+> [timestamps](reference.html#timestamp) of the files.
 > How does GitHub record times, and why?

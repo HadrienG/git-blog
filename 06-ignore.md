@@ -9,14 +9,12 @@ minutes: 5
 > *   Configure Git to ignore specific files.
 > *   Explain why ignoring files can be useful.
 
-What if we have files that we do not want Git to track for us,
-like backup files created by our editor
-or intermediate files created during data analysis.
-Let's create a few dummy files:
+What if we have files that we do not want Git to track for us, like blog post
+drafts or a file listing to-dos for yourself. Let's create a few dummy files.
 
 ~~~ {.bash}
-$ mkdir results
-$ touch a.dat b.dat c.dat results/a.out results/b.out
+$ mkdir drafts
+$ touch TODO.txt drafts/cancer-cure.txt drafts/solving-world-hunger.txt
 ~~~
 
 and see what Git says:
@@ -25,57 +23,84 @@ and see what Git says:
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
-# Untracked files:
-#   (use "git add <file>..." to include in what will be committed)
-#
-#	a.dat
-#	b.dat
-#	c.dat
-#	results/
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	TODO.txt
+	drafts/
+
 nothing added to commit but untracked files present (use "git add" to track)
+
 ~~~
 
 Putting these files under version control would be a waste of disk space.
-What's worse,
-having them all listed could distract us from changes that actually matter,
-so let's tell Git to ignore them.
+What's worse, having them all listed could distract us from changes that 
+actually matter, so let's tell Git to ignore them.
 
-We do this by creating a file in the root directory of our project called `.gitignore`:
+We do this by creating a file in the root directory of our project called 
+`.gitignore`. In the case of the template, it already exists. 
+
+~~~ {.bash}
+$ cat .gitignore
+~~~
+~~~ {.output}
+_site
+.DS_Store
+.jekyll
+.bundle
+.sass-cache
+Gemfile
+Gemfile.lock
+node_modules
+package.json
+~~~
+
+We are going to edit it to ignore our `TODO.txt` file and our `drafts` folder.
 
 ~~~ {.bash}
 $ nano .gitignore
 $ cat .gitignore
 ~~~
 ~~~ {.output}
-*.dat
-results/
+_site
+.DS_Store
+.jekyll
+.bundle
+.sass-cache
+Gemfile
+Gemfile.lock
+node_modules
+package.json
+TODO.txt
+drafts/
 ~~~
 
-These patterns tell Git to ignore any file whose name ends in `.dat`
-and everything in the `results` directory.
-(If any of these files were already being tracked,
-Git would continue to track them.)
+The two new patterns at the end tell Git to ignore the file named `TODO.txt` as 
+well as the entire `drafts` folder.
+(If any of these files were already being tracked, Git would continue to track 
+them.)
 
-Once we have created this file,
-the output of `git status` is much cleaner:
+Once we have updated this file, the output of `git status` is much cleaner:
 
 ~~~ {.bash}
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
-# Untracked files:
-#   (use "git add <file>..." to include in what will be committed)
-#
-#	.gitignore
-nothing added to commit but untracked files present (use "git add" to track)
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   .gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
 
-The only thing Git notices now is the newly-created `.gitignore` file.
-You might think we wouldn't want to track it,
-but everyone we're sharing our repository with will probably want to ignore
-the same things that we're ignoring.
+The only thing Git notices now is the updated `.gitignore` file.
+You might think we wouldn't want to track it, but everyone we're sharing our 
+repository with will probably want to ignore the same things that we're 
+ignoring.
 Let's add and commit `.gitignore`:
 
 ~~~ {.bash}
@@ -84,38 +109,37 @@ $ git commit -m "Add the ignore file"
 $ git status
 ~~~
 ~~~ {.output}
-# On branch master
+On branch master
 nothing to commit, working directory clean
 ~~~
 
-As a bonus, using `.gitignore` helps us avoid accidentally adding to the repository files that we don't want to track:
+As a bonus, using `.gitignore` helps us avoid accidentally adding to the 
+repository files that we don't want to track:
 
 ~~~ {.bash}
-$ git add a.dat
+$ git add drafts/cancer-cure.txt
 ~~~
 ~~~ {.output}
 The following paths are ignored by one of your .gitignore files:
-a.dat
+drafts/cancer-cure.txt
 Use -f if you really want to add them.
 fatal: no files added
 ~~~
 
-If we really want to override our ignore settings,
-we can use `git add -f` to force Git to add something.
+If we really want to override our ignore settings, we can use `git add -f` to 
+force Git to add something.
 We can also always see the status of ignored files if we want:
 
 ~~~ {.bash}
 $ git status --ignored
 ~~~
 ~~~ {.output}
-# On branch master
-# Ignored files:
-#  (use "git add -f <file>..." to include in what will be committed)
-#
-#        a.dat
-#        b.dat
-#        c.dat
-#        results/
+On branch master
+Ignored files:
+  (use "git add -f <file>..." to include in what will be committed)
+
+	TODO.txt
+	drafts/
 
 nothing to commit, working directory clean
 ~~~
