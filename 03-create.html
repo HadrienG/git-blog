@@ -30,7 +30,7 @@
           <h2 class="subtitle">Creating a Repository</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -38,38 +38,39 @@
 </ul>
 </div>
 </section>
-<p>Once Git is configured, we can start using it. Let’s create a directory for our work and then move into that directory:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">mkdir</span> planets
-$ <span class="kw">cd</span> planets</code></pre>
-<p>Then we tell Git to make <code>planets</code> a <a href="reference.html#repository">repository</a>—a place where Git can store versions of our files:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> init</code></pre>
+<p>Once Git is configured, we can start using it. For this lesson, we will create a personal blog and host it on GitHub. Let’s create a directory for our blog and then move into that directory:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span>
+$ <span class="kw">mkdir</span> my-blog
+$ <span class="kw">cd</span> my-blog</code></pre></div>
+<p>Then we tell Git to make <code>my-blog</code> a <a href="reference.html#repository">repository</a> —a place where Git can store versions of our files:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> init</code></pre></div>
 <p>If we use <code>ls</code> to show the directory’s contents, it appears that nothing has changed:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span></code></pre>
-<p>But if we add the <code>-a</code> flag to show everything, we can see that Git has created a hidden directory within <code>planets</code> called <code>.git</code>:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span> -a</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span></code></pre></div>
+<p>But if we add the <code>-a</code> flag to show everything, we can see that Git has created a hidden directory within <code>my-blog</code> called <code>.git</code>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span> -a</code></pre></div>
 <pre class="output"><code>.   ..  .git</code></pre>
 <p>Git stores information about the project in this special sub-directory. If we ever delete it, we will lose the project’s history.</p>
 <p>We can check that everything is set up correctly by asking Git to tell us the status of our project:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status</code></pre>
-<pre class="output"><code># On branch master
-#
-# Initial commit
-#
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status</code></pre></div>
+<pre class="output"><code>On branch master
+
+Initial commit
+
 nothing to commit (create/copy files and use &quot;git add&quot; to track)</code></pre>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Places to Create Git Repositories</h2>
+<h2 id="places-to-create-git-repositories"><span class="glyphicon glyphicon-pencil"></span>Places to Create Git Repositories</h2>
 </div>
 <div class="panel-body">
-<p>Dracula starts a new project, <code>moons</code>, related to his <code>planets</code> project. Despite Wolfman’s concerns, he enters the following sequence of commands to create one Git repository inside another:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span>             <span class="co"># return to home directory</span>
-<span class="kw">mkdir</span> planets  <span class="co"># make a new directory planets</span>
-<span class="kw">cd</span> planets     <span class="co"># go into planets</span>
-<span class="kw">git</span> init       <span class="co"># make the planets directory a Git repository</span>
-<span class="kw">mkdir</span> moons    <span class="co"># make a sub-directory planets/moons</span>
-<span class="kw">cd</span> moons       <span class="co"># go into planets/moons</span>
-<span class="kw">git</span> init       <span class="co"># make the moons sub-directory a Git repository</span></code></pre>
-<p>Why is it a bad idea to do this? How can Dracula “undo” his last <code>git init</code>?</p>
+<p>You want to create a two Git repositories for two separate projects. You enter the following sequence of commands to create a Git repository inside another:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span>                 <span class="co"># return to home directory</span>
+<span class="kw">mkdir</span> project-1    <span class="co"># make a new directory project-1</span>
+<span class="kw">cd</span> project-1       <span class="co"># go into project-1</span>
+<span class="kw">git</span> init           <span class="co"># make the project-1 directory a Git repository</span>
+<span class="kw">mkdir</span> project-2    <span class="co"># make a sub-directory project-1/project-2</span>
+<span class="kw">cd</span> project-2       <span class="co"># go into project-1/project-2</span>
+<span class="kw">git</span> init           <span class="co"># make the project-2 sub-directory a Git repository</span></code></pre></div>
+<p>Why is it a bad idea to do this? How can you “undo” your last <code>git init</code>?</p>
 </div>
 </section>
         </div>

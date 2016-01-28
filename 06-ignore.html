@@ -30,7 +30,7 @@
           <h2 class="subtitle">Ignoring Things</h2>
           <section class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -39,59 +39,114 @@
 </ul>
 </div>
 </section>
-<p>What if we have files that we do not want Git to track for us, like backup files created by our editor or intermediate files created during data analysis. Let’s create a few dummy files:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">mkdir</span> results
-$ <span class="kw">touch</span> a.dat b.dat c.dat results/a.out results/b.out</code></pre>
+<p>What if we have files that we do not want Git to track for us, like blog post drafts or a file listing to-dos for yourself. Let’s create a few dummy files.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">mkdir</span> drafts
+$ <span class="kw">touch</span> TODO.txt drafts/cancer-cure.txt drafts/solving-world-hunger.txt</code></pre></div>
 <p>and see what Git says:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status</code></pre>
-<pre class="output"><code># On branch master
-# Untracked files:
-#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
-#
-#   a.dat
-#   b.dat
-#   c.dat
-#   results/
-nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status</code></pre></div>
+<pre class="output"><code>On branch master
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+    TODO.txt
+    drafts/
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</code></pre>
 <p>Putting these files under version control would be a waste of disk space. What’s worse, having them all listed could distract us from changes that actually matter, so let’s tell Git to ignore them.</p>
-<p>We do this by creating a file in the root directory of our project called <code>.gitignore</code>:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">nano</span> .gitignore
-$ <span class="kw">cat</span> .gitignore</code></pre>
-<pre class="output"><code>*.dat
-results/</code></pre>
-<p>These patterns tell Git to ignore any file whose name ends in <code>.dat</code> and everything in the <code>results</code> directory. (If any of these files were already being tracked, Git would continue to track them.)</p>
-<p>Once we have created this file, the output of <code>git status</code> is much cleaner:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status</code></pre>
-<pre class="output"><code># On branch master
-# Untracked files:
-#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
-#
-#   .gitignore
-nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
-<p>The only thing Git notices now is the newly-created <code>.gitignore</code> file. You might think we wouldn’t want to track it, but everyone we’re sharing our repository with will probably want to ignore the same things that we’re ignoring. Let’s add and commit <code>.gitignore</code>:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add .gitignore
+<p>We do this by creating a file in the root directory of our project called <code>.gitignore</code>. In the case of the template, it already exists.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cat</span> .gitignore</code></pre></div>
+<pre class="output"><code>_site
+.DS_Store
+.jekyll
+.bundle
+.sass-cache
+Gemfile
+Gemfile.lock
+node_modules
+package.json</code></pre>
+<p>We are going to edit it to ignore our <code>TODO.txt</code> file and our <code>drafts</code> folder.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">nano</span> .gitignore
+$ <span class="kw">cat</span> .gitignore</code></pre></div>
+<pre class="output"><code>_site
+.DS_Store
+.jekyll
+.bundle
+.sass-cache
+Gemfile
+Gemfile.lock
+node_modules
+package.json
+TODO.txt
+drafts/</code></pre>
+<p>The two new patterns at the end tell Git to ignore the file named <code>TODO.txt</code> as well as the entire <code>drafts</code> folder. (If any of these files were already being tracked, Git would continue to track them.)</p>
+<p>Once we have updated this file, the output of <code>git status</code> is much cleaner:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status</code></pre></div>
+<pre class="output"><code>On branch master
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+    modified:   .gitignore
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
+<p>The only thing Git notices now is the updated <code>.gitignore</code> file. You might think we wouldn’t want to track it, but everyone we’re sharing our repository with will probably want to ignore the same things that we’re ignoring. Let’s add and commit <code>.gitignore</code>:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add .gitignore
 $ <span class="kw">git</span> commit -m <span class="st">&quot;Add the ignore file&quot;</span>
-$ <span class="kw">git</span> status</code></pre>
-<pre class="output"><code># On branch master
+$ <span class="kw">git</span> status</code></pre></div>
+<pre class="output"><code>On branch master
 nothing to commit, working directory clean</code></pre>
 <p>As a bonus, using <code>.gitignore</code> helps us avoid accidentally adding to the repository files that we don’t want to track:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add a.dat</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add drafts/cancer-cure.txt</code></pre></div>
 <pre class="output"><code>The following paths are ignored by one of your .gitignore files:
-a.dat
+drafts/cancer-cure.txt
 Use -f if you really want to add them.
 fatal: no files added</code></pre>
 <p>If we really want to override our ignore settings, we can use <code>git add -f</code> to force Git to add something. We can also always see the status of ignored files if we want:</p>
-<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status --ignored</code></pre>
-<pre class="output"><code># On branch master
-# Ignored files:
-#  (use &quot;git add -f &lt;file&gt;...&quot; to include in what will be committed)
-#
-#        a.dat
-#        b.dat
-#        c.dat
-#        results/
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status --ignored</code></pre></div>
+<pre class="output"><code>On branch master
+Ignored files:
+  (use &quot;git add -f &lt;file&gt;...&quot; to include in what will be committed)
+
+    TODO.txt
+    drafts/
 
 nothing to commit, working directory clean</code></pre>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="ignoring-nested-files"><span class="glyphicon glyphicon-pencil"></span>Ignoring nested files</h2>
+</div>
+<div class="panel-body">
+<p>Given a directory structure that looks like: <sub><sub><sub> results/data results/plots </sub></sub></sub></p>
+<p>How would you ignore only <code>results/plots</code> and not <code>results/data</code>?</p>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="including-specific-files"><span class="glyphicon glyphicon-pencil"></span>Including specific files</h2>
+</div>
+<div class="panel-body">
+<p>How would you ignore all <code>.data</code> files in your root directory except for <code>final.data</code>? Hint: Find out what <code>!</code> (the exclamation point operator) does</p>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="ignoring-files-deep-in-a-directory"><span class="glyphicon glyphicon-pencil"></span>Ignoring files deep in a directory</h2>
+</div>
+<div class="panel-body">
+<p>Given a directory structure that looks like: <sub><sub><sub> results/data/position/gps/useless.data results/plots </sub></sub></sub></p>
+<p>What’s the shortest <code>.gitignore</code> rule you could write to ignore all <code>.data</code> files in <code>result/data/position/gps</code> Hint: What does appending <code>**</code> to a rule accomplish?</p>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="the-order-of-rules"><span class="glyphicon glyphicon-pencil"></span>The order of rules</h2>
+</div>
+<div class="panel-body">
+<p>Given a <code>.gitignore</code> file with the following contents: <sub><sub><sub> <em>.data !</em>.data </sub></sub></sub></p>
+<p>What will be the result?</p>
+</div>
+</section>
         </div>
       </div>
       </article>
