@@ -33,7 +33,7 @@ index 3c18501..36bbe2a 100644
  avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
 ~~~
 ~~~ {.bash}
-$ git diff HEAD~2 mars.txt
+$ git diff HEAD~2 _config.yml
 ~~~
 ~~~ {.output}
 diff --git a/_config.yml b/_config.yml
@@ -96,7 +96,7 @@ That's the right answer, but typing out random 40-character strings is
 annoying, so Git lets us use just the first few characters:
 
 ~~~ {.bash}
-$ git diff f57057 mars.txt
+$ git diff f57057 _config.yml
 ~~~
 ~~~ {.output}
 diff --git a/_config.yml b/_config.yml

@@ -358,7 +358,7 @@ First, we'll add a quick personal description to our configuration.
 
 ~~~ {.bash}
 $ nano _config.yml
-$ head mars.txt
+$ head _config.yml
 ~~~
 ~~~ {.output}
 #
