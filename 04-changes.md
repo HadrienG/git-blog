@@ -10,8 +10,8 @@ minutes: 20
 > *   Explain where information is stored at each stage of Git commit workflow.
 
 To make our lives easier, we will use a blog template called Jekyll Now.
-We can download it here: 
-[https://github.com/barryclark/jekyll-now/archive/v1.1.0.tar.gz](https://github.com/barryclark/jekyll-now/archive/v1.1.0.tar.gz). 
+We can download a modified copy here: 
+[https://github.com/brunogrande/git-novice/raw/gh-pages/template.zip](https://github.com/brunogrande/git-novice/raw/gh-pages/template.zip). 
 Once we've downloaded it, navigate to our Downloads folder, decompress it and 
 move all of its contents into our `my-blog` repository:
 
