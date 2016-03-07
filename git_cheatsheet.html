@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <title>Software Carpentry: </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body class="lesson">
+    <div class="container card">
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
+      </div>
+      <article>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+                    <h1 class="title"></h1>
+          <h1 id="git-cheat-sheet">Git Cheat Sheet</h1>
+<p><strong>Setting Up Git</strong></p>
+<p>Configure your name and email (use the same email as GitHub)</p>
+<pre><code>git config --global user.name &quot;Vlad Dracula&quot;
+git config --global user.email vlad@tran.sylvan.ia</code></pre>
+<p>Enable coloured text for improved readability</p>
+<pre><code>git config --global color.ui &quot;auto&quot; </code></pre>
+<p><strong>Creating a Repository</strong></p>
+<p>Initialize a new Git repository locally</p>
+<pre><code>git init</code></pre>
+<p>Display the current status of the repository (such as changed files)</p>
+<pre><code>git status</code></pre>
+<p><strong>Tracking Changes</strong></p>
+<p>Add a specific file to the staging area</p>
+<pre><code>git add file.txt</code></pre>
+<p>Add all of the files in the current directory to the staging area</p>
+<pre><code>git add .</code></pre>
+<p>Commit the current staging area to a commit</p>
+<pre><code>git commit -m &quot;Descriptive message&quot;</code></pre>
+<p>Display file changes that exist in the current working directory</p>
+<pre><code>git diff</code></pre>
+<p><img title="Add Commit Workflow" alt="Add Commit Workflow" src="add_commit.png" width="100%" /></p>
+<p><strong>Exploring History</strong></p>
+<p>Display past commits</p>
+<pre><code>git log</code></pre>
+<p>Compare a file to what it looked like one commit ago (HEAD~1)</p>
+<pre><code>git diff HEAD~1 file.txt</code></pre>
+<p>Compare a file to what it looked like at a specific commit (for example, f57057)</p>
+<pre><code>git diff f57057 file.txt</code></pre>
+<p>Restore file to what it was at the last commit (HEAD)</p>
+<pre><code>git checkout HEAD file.txt</code></pre>
+<p>Restore a file to what it was at a specific commit (for example, f57057)</p>
+<pre><code>git checkout f57057 file.txt</code></pre>
+<p><strong>Ignoring Things</strong></p>
+<p>Ignore files in your repository using the .gitignore file (note the dot before gitignore)</p>
+<pre><code>nano .gitignore
+git add .gitignore
+git commit -m &quot;Add the ignore file&quot;</code></pre>
+<p><strong>Remotes in GitHub</strong></p>
+<p>After creating a repository on GitHub, add it as a remote to your local repository</p>
+<pre><code>git remote add origin https://github.com/&lt;username&gt;/&lt;repository_name&gt;</code></pre>
+<p>List all remotes associated with your Git repository</p>
+<pre><code>git remote –v</code></pre>
+<p>Upload (push) local repository to GitHub</p>
+<pre><code>git push origin master</code></pre>
+<p>Download (pull) remote changes on GitHub to your local repository</p>
+<pre><code>git pull origin master</code></pre>
+<p><strong>Conflicts</strong></p>
+<p>When you encounter a merge conflict, the file in question will contain something that looks like the following. You will need to manually edit this to decide what you want to keep and remove the extra lines: the ones with <code>&lt;&lt;&lt;&lt;&lt;</code>, <code>=====</code> and <code>&gt;&gt;&gt;&gt;&gt;</code>.</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Blah blah blah (our version)
+=======
+Blah blah blah (other version)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 86cb171b60a13d</code></pre>
+        </div>
+      </div>
+      </article>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/git-novice">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      </div>
+    </div>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
+  </body>
+</html>
