@@ -139,3 +139,7 @@ Blah blah blah (our version)
 Blah blah blah (other version)
 >>>>>>> 86cb171b60a13d
 ```
+
+**Attribution**
+
+The Git Add–Commit sketch was drawn by Marija Jovanovic. 
