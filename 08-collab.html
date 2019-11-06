@@ -44,37 +44,35 @@
 <h2 id="practicing-by-yourself"><span class="glyphicon glyphicon-pushpin"></span>Practicing by yourself</h2>
 </div>
 <div class="panel-body">
-<p>If you’re working through this lesson on your own, you can carry on by opening a second terminal window, and switching to another directory (e.g. <code>/tmp</code>). This window will represent your partner, working on another computer. You won’t need to give anyone access on GitHub, because both ‘partners’ are you.</p>
+<p>If you’re working through this lesson on your own, you can carry on by opening a second terminal window, and switching to another directory (e.g. <code>/tmp</code>). This window will represent your partner, working on another computer. You won’t need to give anyone access on GitHub, because both ‘partners’ are you.</p>
 </div>
 </aside>
 <p>The Owner needs to give the Collaborator access. On GitHub, click the settings button on the right, then select Collaborators, and enter your partner’s username.</p>
-<div class="figure">
-<img src="fig/github-add-collaborators.png" alt="Adding collaborators on GitHub" />
-<p class="caption">Adding collaborators on GitHub</p>
-</div>
-<p>The Collaborator needs to work on this project locally. He or she should <code>cd</code> to another directory, such that <code>ls</code> doesn’t show a <code>planets</code> folder, and then make a copy of the Owner’s repository.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span>
-$ <span class="kw">mkdir</span> Collaborations
-$ <span class="kw">cd</span> Collaborations
-$ <span class="kw">git</span> clone https://github.com/<span class="kw">&lt;</span>username<span class="kw">&gt;</span>/<span class="kw">&lt;</span>username<span class="kw">&gt;</span>.github.io.git</code></pre></div>
+<figure>
+<img src="fig/github-add-collaborators.png" alt="" /><figcaption>Adding collaborators on GitHub</figcaption>
+</figure>
+<p>The Collaborator needs to work on this project locally. He or she should <code>cd</code> to another directory, such that <code>ls</code> doesn’t show a <code>my-blog</code> folder, and then make a copy of the Owner’s repository.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a>$ <span class="bu">cd</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>$ <span class="fu">mkdir</span> Collaborations</span>
+<span id="cb1-3"><a href="#cb1-3"></a>$ <span class="bu">cd</span> Collaborations</span>
+<span id="cb1-4"><a href="#cb1-4"></a>$ <span class="fu">git</span> clone https://github.com/<span class="op">&lt;</span>username<span class="op">&gt;</span>/<span class="op">&lt;</span>username<span class="op">&gt;</span>.github.io.git</span></code></pre></div>
 <p>Replace both instances of <code>&lt;username&gt;</code> with the Owner’s GitHub username.</p>
 <p><code>git clone</code> creates a fresh local copy of a remote repository.</p>
-<div class="figure">
-<img src="fig/github-collaboration.svg" alt="After Creating Clone of Repository" />
-<p class="caption">After Creating Clone of Repository</p>
-</div>
+<figure>
+<img src="fig/github-collaboration.svg" alt="" /><figcaption>After Creating Clone of Repository</figcaption>
+</figure>
 <p>The Collaborator can now make a change in his or her copy of the repository. In our case, the Collaborator will add a new post in <code>_posts</code>. You can start by duplicating the existing post:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span> <span class="kw">&lt;</span>username<span class="kw">&gt;</span>.github.io
-$ <span class="kw">cp</span> _posts/2014-3-3-Hello-World.md _posts/2016-02-03-Guest-Post.md
-$ <span class="kw">nano</span> _posts/2016-02-03-Guest-Post.md</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a>$ <span class="bu">cd</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>.github.io</span>
+<span id="cb2-2"><a href="#cb2-2"></a>$ <span class="fu">cp</span> _posts/2014-3-3-Hello-World.md _posts/2016-02-03-Guest-Post.md</span>
+<span id="cb2-3"><a href="#cb2-3"></a>$ <span class="fu">nano</span> _posts/2016-02-03-Guest-Post.md</span></code></pre></div>
 <p>Then, you can edit the title and the content. Leave the <code>layout</code> as <code>post</code>. After the Collaborator has edited their guest post, they should be familiar by now with the process of committing the new file.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add _posts/2016-02-03-Guest-Post.md
-$ <span class="kw">git</span> commit -m <span class="st">&quot;Add guest post&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a>$ <span class="fu">git</span> add _posts/2016-02-03-Guest-Post.md</span>
+<span id="cb3-2"><a href="#cb3-2"></a>$ <span class="fu">git</span> commit -m <span class="st">&quot;Add guest post&quot;</span></span></code></pre></div>
 <pre class="output"><code>[master d28ec36] Add guest post
  1 file changed, 6 insertions(+)
  create mode 100644 _posts/2016-02-03-Guest-Post.md</code></pre>
 <p>Then push the change to GitHub:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> push origin master</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a>$ <span class="fu">git</span> push origin master</span></code></pre></div>
 <pre class="output"><code>Counting objects: 4, done.
 Delta compression using up to 8 threads.
 Compressing objects: 100% (4/4), done.
@@ -84,7 +82,7 @@ To https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git
    0f6895f..d28ec36  master -&gt; master</code></pre>
 <p>Note that we didn’t have to create a remote called <code>origin</code>: Git does this automatically when we clone a repository using the name “origin”. (This is why <code>origin</code> was a sensible choice earlier when we were setting up remotes by hand.)</p>
 <p>We can now download changes into the original repository on our machine:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> pull origin master</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a>$ <span class="fu">git</span> pull origin master</span></code></pre></div>
 <pre class="output"><code>remote: Counting objects: 4, done.
 remote: Compressing objects: 100% (4/4), done.
 remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0

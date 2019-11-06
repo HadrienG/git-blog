@@ -39,16 +39,16 @@
 </ul>
 </div>
 </section>
-<p>To make our lives easier, we will use a blog template called Jekyll Now. We can download a modified copy here: <a href="https://github.com/brunogrande/git-novice/raw/gh-pages/template.zip" class="uri">https://github.com/brunogrande/git-novice/raw/gh-pages/template.zip</a>. Once we’ve downloaded it, navigate to our Downloads folder, decompress it and move all of its contents into our <code>my-blog</code> repository:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span> /path/to/downloads
-$ <span class="kw">tar</span> xzf jekyll-now-1.1.0.tar.gz
-$ <span class="kw">mv</span> jekyll-now-1.1.0/* ~/my-blog/</code></pre></div>
+<p>To make our lives easier, we will use a blog template called Jekyll Now. We can download a modified copy here: <a href="https://github.com/HadrienG/git-blog/raw/gh-pages/template.zip">https://github.com/HadrienG/git-blog/raw/gh-pages/template.zip</a>. Once we’ve downloaded it, navigate to our Downloads folder, decompress it and move all of its contents into our <code>my-blog</code> repository:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a>$ <span class="bu">cd</span> ~/Downloads</span>
+<span id="cb1-2"><a href="#cb1-2"></a>$ <span class="fu">unzip</span> template.zip</span>
+<span id="cb1-3"><a href="#cb1-3"></a>$ <span class="fu">mv</span> template/* ~/my-blog/</span></code></pre></div>
 <p>If we move back to our <code>my-blog repository</code>, we can see the new files and folders.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a>$ <span class="fu">ls</span></span></code></pre></div>
 <pre class="output"><code>404.md      LICENSE     _config.yml _layouts    _sass       feed.xml    index.html
 CNAME       README.md   _includes   _posts      about.md    images      style.scss</code></pre>
 <p>If we check the status of our project again, Git tells us that it’s noticed the new files:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a>$ <span class="fu">git</span> status</span></code></pre></div>
 <pre class="output"><code>On branch master
 
 Initial commit
@@ -74,9 +74,9 @@ Untracked files:
 
 nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p>The “untracked files” message means that there are files in the directory that Git isn’t keeping track of. We want Git to track these files and can do so using <code>git add</code>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add .     <span class="co"># Add the entire current directory</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a>$ <span class="fu">git</span> add .     <span class="co"># Add the entire current directory</span></span></code></pre></div>
 <p>We can then check that the right thing happened:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a>$ <span class="fu">git</span> status</span></code></pre></div>
 <pre class="output"><code>On branch master
 
 Initial commit
@@ -113,7 +113,7 @@ Changes to be committed:
     new file:   index.html
     new file:   style.scss</code></pre>
 <p>Git now knows that it’s supposed to keep track of all of these files, but it hasn’t recorded these changes as a commit yet. To get it to do that, we need to run one more command:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> commit -m <span class="st">&quot;Add template files&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a>$ <span class="fu">git</span> commit -m <span class="st">&quot;Add template files&quot;</span></span></code></pre></div>
 <pre class="output"><code>[master (root-commit) 0dd20d9] Added template files
  28 files changed, 899 insertions(+)
  create mode 100644 .gitignore
@@ -148,11 +148,11 @@ Changes to be committed:
 <p>We use the <code>-m</code> flag (for “message”) to record a short, descriptive, and specific comment that will help us remember later on what we did and why. If we just run <code>git commit</code> without the <code>-m</code> option, Git will launch <code>nano</code> (or whatever other editor we configured as <code>core.editor</code>) so that we can write a longer message.</p>
 <p><a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">Good commit messages</a> start with a brief (&lt;50 characters) summary of changes made in the commit. If you want to go into more detail, add a blank line between the summary line and your additional notes.</p>
 <p>If we run <code>git status</code> now:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status</code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a>$ <span class="fu">git</span> status</span></code></pre></div>
 <pre class="output"><code>On branch master
 nothing to commit, working directory clean</code></pre>
 <p>it tells us everything is up to date. If we want to know what we’ve done recently, we can ask Git to show us the project’s history using <code>git log</code>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> log</code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a>$ <span class="fu">git</span> log</span></code></pre></div>
 <pre class="output"><code>commit 0dd20d9222f2a6d7e96d2876c327094b1fa34f58
 Author: Bruno Grande &lt;bgrande@sfu.ca&gt;
 Date:   Sun Jan 24 15:27:36 2016 -0800
@@ -168,8 +168,8 @@ Date:   Sun Jan 24 15:27:36 2016 -0800
 </div>
 </aside>
 <p>Now, we are going to personalize the blog. We need to edit the configuration file (<code>_config.yml</code>) to add our name. (Again, we’ll edit with <code>nano</code> and then <code>head</code> the file to show the first 10 lines; you may use a different editor, and don’t need to <code>head</code>.)</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">nano</span> _config.yml
-$ <span class="kw">head</span> _config.yml</code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a>$ <span class="fu">nano</span> _config.yml</span>
+<span id="cb15-2"><a href="#cb15-2"></a>$ <span class="fu">head</span> _config.yml</span></code></pre></div>
 <pre class="output"><code>#
 # This file contains configuration flags to customize your site
 #
@@ -180,7 +180,7 @@ name: Bruno Grande
 # Short bio or description (displayed in the header)
 description: Web Developer from Somewhere</code></pre>
 <p>When we run <code>git status</code> now, it tells us that a file it already knows about has been modified:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status</code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a>$ <span class="fu">git</span> status</span></code></pre></div>
 <pre class="output"><code>On branch master
 Changes not staged for commit:
   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
@@ -190,7 +190,7 @@ Changes not staged for commit:
 
 no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
 <p>The last line is the key phrase: “no changes added to commit”. We have changed this file, but we haven’t told Git we will want to save those changes (which we do with <code>git add</code>) nor have we saved them (which we do with <code>git commit</code>). So let’s do that now. It is good practice to always review our changes before saving them. We do this using <code>git diff</code>. This shows us the differences between the current state of the file and the most recently saved version:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> diff</code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a>$ <span class="fu">git</span> diff</span></code></pre></div>
 <pre class="output"><code>diff --git a/_config.yml b/_config.yml
 index 494da8c..3c18501 100644
 --- a/_config.yml
@@ -205,22 +205,22 @@ index 494da8c..3c18501 100644
  # Short bio or description (displayed in the header)
  description: Web Developer from Somewhere</code></pre>
 <p>The output is cryptic because it is actually a series of commands for tools like editors and <code>patch</code> telling them how to reconstruct one file given the other. If we break it down into pieces:</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>The first line tells us that Git is producing output similar to the Unix <code>diff</code> command comparing the old and new versions of the file.</li>
 <li>The second line tells exactly which versions of the file Git is comparing; <code>494da8c</code> and <code>36bbe2a</code> are unique computer-generated labels for those versions.</li>
 <li>The third and fourth lines once again show the name of the file being changed.</li>
 <li>The remaining lines are the most interesting, they show us the actual differences and the lines on which they occur. In particular, the <code>-</code> markers in the first column show the lines that were removed and the <code>+</code> markers show the lines that were added. The pattern of a <code>-</code> line followed by a <code>+</code> sign is common; it typically indicates that a line has been changed while explicitly giving the original and updated versions.</li>
 </ol>
 <p>After reviewing our change, it’s time to commit it:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> commit -m <span class="st">&quot;Add name to configuration&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a>$ <span class="fu">git</span> commit -m <span class="st">&quot;Add name to configuration&quot;</span></span></code></pre></div>
 <pre class="output"><code>On branch master
 Changes not staged for commit:
     modified:   _config.yml
 
 no changes added to commit</code></pre>
 <p>Whoops: Git won’t commit because we didn’t use <code>git add</code> first. Let’s fix that:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add _config.yml
-$ <span class="kw">git</span> commit -m <span class="st">&quot;Add name to configuration&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a>$ <span class="fu">git</span> add _config.yml</span>
+<span id="cb23-2"><a href="#cb23-2"></a>$ <span class="fu">git</span> commit -m <span class="st">&quot;Add name to configuration&quot;</span></span></code></pre></div>
 <pre class="output"><code>[master ce26584] Add name to configuration
  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>Git insists that we add files to the set we want to commit before actually committing anything because we may not want to commit everything at once. For example, suppose we’re adding a few citations to our supervisor’s work to our thesis. We might want to commit those additions, and the corresponding addition to the bibliography, but <em>not</em> commit the work we’re doing on the conclusion (which we haven’t finished yet).</p>
@@ -233,13 +233,12 @@ $ <span class="kw">git</span> commit -m <span class="st">&quot;Add name to confi
 <p>If you think of Git as taking snapshots of changes over the life of a project, <code>git add</code> specifies <em>what</em> will go in a snapshot (putting things in the staging area), and <code>git commit</code> then <em>actually takes</em> the snapshot, and makes a permanent record of it (as a commit). If you don’t have anything staged when you type <code>git commit</code>, Git will prompt you to use <code>git commit -a</code> or <code>git commit --all</code>, which is kind of like gathering <em>everyone</em> for the picture! However, it’s almost always better to explicitly add things to the staging area, because you might commit changes you forgot you made. (Going back to snapshots, you might get the extra with incomplete makeup walking on the stage for the snapshot because you used <code>-a</code>!) Try to stage things manually, or you might find yourself searching for “git undo commit” more than you would like!</p>
 </div>
 </aside>
-<div class="figure">
-<img src="fig/git-staging-area.svg" alt="The Git Staging Area" />
-<p class="caption">The Git Staging Area</p>
-</div>
+<figure>
+<img src="fig/git-staging-area.svg" alt="" /><figcaption>The Git Staging Area</figcaption>
+</figure>
 <p>Let’s watch as our changes to a file move from our editor to the staging area and into long-term storage. First, we’ll add a quick personal description to our configuration.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">nano</span> _config.yml
-$ <span class="kw">head</span> _config.yml</code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a>$ <span class="fu">nano</span> _config.yml</span>
+<span id="cb25-2"><a href="#cb25-2"></a>$ <span class="fu">head</span> _config.yml</span></code></pre></div>
 <pre class="output"><code>#
 # This file contains configuration flags to customize your site
 #
@@ -249,7 +248,7 @@ name: Bruno Grande
 
 # Short bio or description (displayed in the header)
 description: Computational biologist in cancer genomics</code></pre>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> diff</code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a>$ <span class="fu">git</span> diff</span></code></pre></div>
 <pre class="output"><code>diff --git a/_config.yml b/_config.yml
 index 3c18501..36bbe2a 100644
 --- a/_config.yml
@@ -264,10 +263,10 @@ index 3c18501..36bbe2a 100644
  # URL of your avatar or profile pic (you could use your GitHub profile pic)
  avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png</code></pre>
 <p>So far, so good: we’ve added one line to the end of the file (shown with a <code>+</code> in the first column). Now let’s put that change in the staging area and see what <code>git diff</code> reports:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> add _config.yml
-$ <span class="kw">git</span> diff</code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a>$ <span class="fu">git</span> add _config.yml</span>
+<span id="cb29-2"><a href="#cb29-2"></a>$ <span class="fu">git</span> diff</span></code></pre></div>
 <p>There is no output: as far as Git can tell, there’s no difference between what it’s been asked to save permanently and what’s currently in the directory. However, if we do this:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> diff --staged</code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a>$ <span class="fu">git</span> diff --staged</span></code></pre></div>
 <pre class="output"><code>diff --git a/_config.yml b/_config.yml
 index 3c18501..36bbe2a 100644
 --- a/_config.yml
@@ -282,15 +281,15 @@ index 3c18501..36bbe2a 100644
  # URL of your avatar or profile pic (you could use your GitHub profile pic)
  avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png</code></pre>
 <p>it shows us the difference between the last committed change and what’s in the staging area. Let’s save our changes:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> commit -m <span class="st">&quot;Add personal description to configuration&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1"></a>$ <span class="fu">git</span> commit -m <span class="st">&quot;Add personal description to configuration&quot;</span></span></code></pre></div>
 <pre class="output"><code>[master 544e588] Add personal description to configuration
  1 file changed, 1 insertion(+), 1 deletion(-)</code></pre>
 <p>check our status:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status</code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1"></a>$ <span class="fu">git</span> status</span></code></pre></div>
 <pre class="output"><code>On branch master
 nothing to commit, working directory clean</code></pre>
 <p>and look at the history of what we’ve done so far:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> log</code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1"></a>$ <span class="fu">git</span> log</span></code></pre></div>
 <pre class="output"><code>commit 544e58833afa58d034f77d3b03cdbb3902331dfc
 Author: Bruno Grande &lt;bgrande@sfu.ca&gt;
 Date:   Sun Jan 24 17:09:38 2016 -0800
@@ -309,20 +308,19 @@ Date:   Sun Jan 24 15:27:36 2016 -0800
 
     Add template files</code></pre>
 <p>To recap, when we want to add changes to our repository, we first need to add the changed files to the staging area (<code>git add</code>) and then commit the staged changes to the repository (<code>git commit</code>):</p>
-<div class="figure">
-<img src="fig/git-committing.svg" alt="The Git Commit Workflow" />
-<p class="caption">The Git Commit Workflow</p>
-</div>
+<figure>
+<img src="fig/git-committing.svg" alt="" /><figcaption>The Git Commit Workflow</figcaption>
+</figure>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
 <h2 id="choosing-a-commit-message"><span class="glyphicon glyphicon-pencil"></span>Choosing a commit message</h2>
 </div>
 <div class="panel-body">
 <p>Which of the following commit messages would be most appropriate for the last commit made to <code>_config.yml</code>?</p>
-<ol style="list-style-type: decimal">
-<li>“Changes”</li>
-<li>“Changed line to ‘Computational biologist in cancer genomics’ in _config.yml&quot;</li>
-<li>“Add personal description to configuration”</li>
+<ol type="1">
+<li><p>“Changes”</p></li>
+<li><p>"Changed line to ‘Computational biologist in cancer genomics’ in _config.yml"</p></li>
+<li><p>“Add personal description to configuration”</p></li>
 </ol>
 </div>
 </section>
@@ -332,7 +330,7 @@ Date:   Sun Jan 24 15:27:36 2016 -0800
 </div>
 <div class="panel-body">
 <p>Which command(s) below would save the changes of <code>myfile.txt</code> to my local Git repository?</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><pre><code>$ git commit -m &quot;my recent changes&quot;</code></pre></li>
 <li><pre><code>$ git init myfile.txt
 $ git commit -m &quot;my recent changes&quot;</code></pre></li>

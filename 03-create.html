@@ -39,19 +39,19 @@
 </div>
 </section>
 <p>Once Git is configured, we can start using it. For this lesson, we will create a personal blog and host it on GitHub. Let’s create a directory for our blog and then move into that directory:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cd</span>
-$ <span class="kw">mkdir</span> my-blog
-$ <span class="kw">cd</span> my-blog</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a>$ <span class="bu">cd</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>$ <span class="fu">mkdir</span> my-blog</span>
+<span id="cb1-3"><a href="#cb1-3"></a>$ <span class="bu">cd</span> my-blog</span></code></pre></div>
 <p>Then we tell Git to make <code>my-blog</code> a <a href="reference.html#repository">repository</a> —a place where Git can store versions of our files:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> init</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a>$ <span class="fu">git</span> init</span></code></pre></div>
 <p>If we use <code>ls</code> to show the directory’s contents, it appears that nothing has changed:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a>$ <span class="fu">ls</span></span></code></pre></div>
 <p>But if we add the <code>-a</code> flag to show everything, we can see that Git has created a hidden directory within <code>my-blog</code> called <code>.git</code>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span> -a</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a>$ <span class="fu">ls</span> -a</span></code></pre></div>
 <pre class="output"><code>.   ..  .git</code></pre>
 <p>Git stores information about the project in this special sub-directory. If we ever delete it, we will lose the project’s history.</p>
 <p>We can check that everything is set up correctly by asking Git to tell us the status of our project:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">git</span> status</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a>$ <span class="fu">git</span> status</span></code></pre></div>
 <pre class="output"><code>On branch master
 
 Initial commit
@@ -62,14 +62,14 @@ nothing to commit (create/copy files and use &quot;git add&quot; to track)</code
 <h2 id="places-to-create-git-repositories"><span class="glyphicon glyphicon-pencil"></span>Places to Create Git Repositories</h2>
 </div>
 <div class="panel-body">
-<p>You want to create a two Git repositories for two separate projects. You enter the following sequence of commands to create a Git repository inside another:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span>                 <span class="co"># return to home directory</span>
-<span class="kw">mkdir</span> project-1    <span class="co"># make a new directory project-1</span>
-<span class="kw">cd</span> project-1       <span class="co"># go into project-1</span>
-<span class="kw">git</span> init           <span class="co"># make the project-1 directory a Git repository</span>
-<span class="kw">mkdir</span> project-2    <span class="co"># make a sub-directory project-1/project-2</span>
-<span class="kw">cd</span> project-2       <span class="co"># go into project-1/project-2</span>
-<span class="kw">git</span> init           <span class="co"># make the project-2 sub-directory a Git repository</span></code></pre></div>
+<p>You want to create two Git repositories for two separate projects. You enter the following sequence of commands to create a Git repository inside another:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">cd</span>                 <span class="co"># return to home directory</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">mkdir</span> project-1    <span class="co"># make a new directory project-1</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="bu">cd</span> project-1       <span class="co"># go into project-1</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="fu">git</span> init           <span class="co"># make the project-1 directory a Git repository</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="fu">mkdir</span> project-2    <span class="co"># make a sub-directory project-1/project-2</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="bu">cd</span> project-2       <span class="co"># go into project-1/project-2</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="fu">git</span> init           <span class="co"># make the project-2 sub-directory a Git repository</span></span></code></pre></div>
 <p>Why is it a bad idea to do this? How can you “undo” your last <code>git init</code>?</p>
 </div>
 </section>
